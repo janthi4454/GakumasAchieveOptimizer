@@ -1,0 +1,25 @@
+name: Build site
+description:
+inputs:
+  subpath:
+    required: false
+    default: ""
+  artifact-name:
+    required: true
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 24
+        cache: npm
+    - run: npm ci
+      shell: bash
+    - run: npm run build
+      shell: bash
+      env:
+        BASE_PATH: /${{ github.event.repository.name }}/${{ inputs.subpath && '/' || '' }}
+    - uses: actions/upload-artifact@v4
+      with:
+        name: ${{ inputs.artifact-name }}
+        path: dist
