@@ -1,8 +1,4 @@
-# GakumasAchieveOptimizer
-
 学マスのアチーブメント埋め支援ツールです
-
-![アプリのイメージ図](./images/demo.png)
 
 ## 機能紹介
 
