@@ -36,8 +36,8 @@ const tabs = ref([
 </style>
 
 <template>
-    <Dialog header="About" class="w-dvh h-dvh" v-model:visible="store.aboutVisible" dismissableMask modal closable
-        :draggable="false">
+    <Dialog header="About" class="w-dvh h-dvh min-w-[80dvw]" v-model:visible="store.aboutVisible" dismissableMask modal
+        closable :draggable="false">
         <Tabs class="w-full" value="features">
             <TabList>
                 <Tab v-for="tab in tabs" :value="tab.id">{{ tab.title }}</Tab>
