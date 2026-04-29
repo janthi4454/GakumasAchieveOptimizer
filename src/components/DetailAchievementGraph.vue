@@ -177,7 +177,7 @@ const idolInfo = Idols.reduce<TIdolOption[]>(
                     placeholder="Select an Idol" class="w-full md:w-56" /> -->
             </div>
 
-            <Panel header="アチーブメント毎の取得経験値量期待値" toggleable :pt="panelPt">
+            <Panel header="アチーブメント毎の期待取得経験値量 (/ プロデュース)" toggleable :pt="panelPt">
                 <div class="w-full max-w-full relative" :style="{ height: `${achieveHeight}px` }">
                     <Bar v-show="achieveChartData.datasets[0]?.data.length ?? 0 > 0" :data="achieveChartData"
                         :options="deepmerge(chartOptions, { plugins: { tooltip: { callbacks: { label: (ctx) => `${ctx.parsed.x?.toFixed(1)} 経験値` } } } } satisfies ChartOptions<'bar'>)" />
