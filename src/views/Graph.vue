@@ -48,7 +48,7 @@ const chartOptions: ComputedRef<ChartOptions<"bar">> = computed<ChartOptions<"ba
       },
       title: {
         display: true,
-        text: "取得経験値量取得経験値量期待値（プロデュース毎）",
+        text: "期待取得経験値量 (/ プロデュース)",
         font: {
           size: 18,
           weight: 'bold'
