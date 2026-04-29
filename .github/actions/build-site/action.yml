@@ -9,7 +9,7 @@ inputs:
 runs:
   using: composite
   steps:
-    - uses: actions/setup-node@v4
+    - uses: actions/setup-node@v6
       with:
         node-version: 24
         cache: npm
@@ -19,7 +19,7 @@ runs:
       shell: bash
       env:
         BASE_PATH: /${{ github.event.repository.name }}/${{ inputs.subpath && '/' || '' }}
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v7
       with:
         name: ${{ inputs.artifact-name }}
         path: dist
