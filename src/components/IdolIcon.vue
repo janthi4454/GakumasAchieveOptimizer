@@ -3,7 +3,6 @@ import { useIdolStore } from '@/stores/idol';
 import type { TIdol } from '@/types';
 import { computed } from 'vue';
 
-
 const props = defineProps<
     {
         idol: TIdol;

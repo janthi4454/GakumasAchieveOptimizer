@@ -6,10 +6,15 @@ import {
     type TTier,
     Idols
 } from "@/types";
+import { makeRecordFromIterator } from "@/utils";
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 import z from "zod";
 import { useSettingsStore } from "./settings";
+
+const allIcons = import.meta.glob('@/assets/*.png', { eager: true, import: 'default' })
+const icons = makeRecordFromIterator(Idols, (idol) => allIcons[`/src/assets/${idol}.png`])
+const miniIcons = makeRecordFromIterator(Idols, (idol) => allIcons[`/src/assets/${idol}_mini.png`])
 
 export const useIdolStore = defineStore(
     "idol", () => {
@@ -33,12 +38,12 @@ export const useIdolStore = defineStore(
             return `${info.family_name} ${info.name}`
         }
 
-        function getIdolIcon(idol: TIdol) {
-            return `/${idol}.png`;
+        function getIdolIcon(idol: TIdol): string {
+            return icons[idol] as string;
         }
 
-        function getIdolMiniIcon(idol: TIdol) {
-            return `/${idol}_mini.png`;
+        function getIdolMiniIcon(idol: TIdol): string {
+            return miniIcons[idol] as string;
         }
 
 
