@@ -3,7 +3,7 @@ import Graph from "@/views/Graph.vue";
 import InputPanel from "@/views/Input.vue";
 import Settings from "@/views/Settings.vue";
 import SnapshotDialog from "@/views/Snapshots.vue";
-import { Toast } from "primevue";
+import { Message, Toast } from "primevue";
 import Button from "primevue/button";
 import Splitter from "primevue/splitter";
 import SplitterPanel from "primevue/splitterpanel";
@@ -47,10 +47,13 @@ function onClickTitle() {
   }
 }
 
+const isMobile = ref(false)
+
 onMounted(
   () => {
     store.isDarkMode = true;
     document.documentElement.classList.toggle("p-dark", store.isDarkMode);
+    isMobile.value = window.matchMedia('(max-width: 767px)').matches
   }
 )
 </script>
@@ -77,6 +80,13 @@ onMounted(
         <Button :icon="store.isDarkMode ? 'pi pi-sun' : 'pi pi-moon'" severity="secondary" text @click="toggleDark" />
       </template>
     </Toolbar>
+
+    <Message severity="error" v-if="isMobile">
+      <template #icon>
+        <div class="pi pi-exclamation-triangle" />
+      </template>
+      現在スマホ環境非対応です
+    </Message>
 
     <Splitter v-show="modeRef === null" class="flex-1 min-h-0" style="border: none">
       <SplitterPanel class="min-w-120" :size="65" :min-size="35">
